@@ -1,36 +1,37 @@
 import requests
 import json
+import os
 
 # URL for the web service, should be similar to:
 # 'http://8530a665-66f3-49c8-a953-b82a2d312917.eastus.azurecontainer.io/score'
-scoring_uri = ''
+scoring_uri = 'http://1a738fce-ea9c-4e69-b1a7-9736776b1236.westeurope.azurecontainer.io/score'
 # If the service is authenticated, set the key or token
-key = ''
+key = os.getenv('ML_')
 
 # Two sets of data to score, so we get two results back
 data = {"data":
         [
           {
             "age": 17,
-            "campaign": 1,
-            "cons.conf.idx": -46.2,
-            "cons.price.idx": 92.893,
-            "contact": "cellular",
-            "day_of_week": "mon",
-            "default": "no",
-            "duration": 971,
-            "education": "university.degree",
-            "emp.var.rate": -1.8,
-            "euribor3m": 1.299,
-            "housing": "yes",
             "job": "blue-collar",
-            "loan": "yes",
             "marital": "married",
+            "education": "university.degree",
+            "default": "no",
+            "housing": "yes",
+            "loan": "yes",
+            "contact": "cellular",
             "month": "may",
-            "nr.employed": 5099.1,
+            "day_of_week": "mon",
+            "duration": 971,
+            "campaign": 1,
             "pdays": 999,
+            "previous": 1,
             "poutcome": "failure",
-            "previous": 1
+            "emp.var.rate": -1.8,
+            "cons.price.idx": 92.893,
+            "cons.conf.idx": -46.2,
+            "euribor3m": 1.299,
+            "nr.employed": 5099.1
           },
           {
             "age": 87,
@@ -53,7 +54,7 @@ data = {"data":
             "pdays": 999,
             "poutcome": "failure",
             "previous": 1
-          },
+          }
       ]
     }
 # Convert to JSON string
